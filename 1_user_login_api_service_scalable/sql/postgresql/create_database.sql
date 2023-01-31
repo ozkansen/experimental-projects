@@ -9,3 +9,5 @@ CREATE  TABLE IF NOT EXISTS "public".users (
 );
 
 CREATE UNIQUE INDEX unq_users ON "public".users ( username );
+
+INSERT INTO "public".users(username, passwd) VALUES ('deneme', '$2a$10$d08bdfeo.TqxAjr/tqG2A.32zVFx27TMH0AWV.CUUWdcIYFr7P/DG');
