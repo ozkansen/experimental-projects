@@ -23,4 +23,5 @@ func NewLoginHandler(r repository.Repository, c encrypt.Compare, l logger.Logger
 }
 
 func (l *Login) Handler(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("ok\n"))
 }
