@@ -1,4 +1,5 @@
-version: '3.8'
+version: '3.9'
+name: "user_login_api_service"
 
 services:
   db:
@@ -14,7 +15,7 @@ services:
           cpus: "2"
           memory: "1GB"
 
-  login:
+  backend:
     restart: always
     environment:
       - DB_URL=postgres://postgres:ExamplePassword!@db:5432/postgres
