@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:13-alpine
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: "ExamplePassword!"
+    volumes:
+      - ./sql/postgresql/create_database.sql:/docker-entrypoint-initdb.d/init.sql
+    deploy:
+      resources:
+        limits:
+          cpus: "2"
+          memory: "1GB"
+
+  login:
+    restart: always
+    environment:
+      - DB_URL=postgres://postgres:ExamplePassword!@db:5432/postgres
+    depends_on:
+      - db
+    ports:
+      - "8080-8083:8080"
+    build:
+      dockerfile: Dockerfile
+    deploy:
+      resources:
+        limits:
+          cpus: "1"
+          memory: "256M"
+      replicas: 4
