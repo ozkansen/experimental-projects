@@ -14,8 +14,9 @@ func main() {
 	log.Info("starting user login api service")
 
 	passwdCompare := encrypt.NewBcryptCompare()
+	repo := getRepo(log)
 
-	loginHandler := handlers.NewLoginHandler(passwdCompare, log)
+	loginHandler := handlers.NewLoginHandler(repo, passwdCompare, log)
 	mux := router(loginHandler)
 
 	log.Info("running application service")
