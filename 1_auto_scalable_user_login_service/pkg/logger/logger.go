@@ -39,7 +39,7 @@ type StdLogger struct {
 func NewStdLogger(level int) *StdLogger {
 	return &StdLogger{
 		logLevel: level,
-		stdOut:   log.New(os.Stderr, "", log.LstdFlags),
+		stdOut:   log.New(os.Stdout, "", log.LstdFlags),
 		errOut:   log.New(os.Stderr, "", log.LstdFlags),
 	}
 }
