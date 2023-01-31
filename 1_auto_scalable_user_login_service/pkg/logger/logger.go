@@ -104,7 +104,7 @@ func (l *StdLogger) Fatal(msg string) {
 	if l.logLevel == Discard {
 		return
 	}
-	l.errOut.Fatal("FTL", msg)
+	l.errOut.Fatal("FTL ", msg)
 }
 
 func (l *StdLogger) Fatalf(format string, args ...any) {
