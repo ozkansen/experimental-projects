@@ -62,13 +62,6 @@ func (l *Login) Handler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if err = json.Unmarshal(data, &req); err != nil {
-		l.log.Error(err.Error())
-		w.Write([]byte(err.Error()))
-		w.WriteHeader(http.StatusBadRequest)
-		return
-	}
-
 	if err = l.comparePasswd.Compare([]byte(dbUser.Passwd), []byte(req.Passwd)); err != nil {
 		l.log.Error(err.Error())
 		w.Write([]byte(err.Error()))
